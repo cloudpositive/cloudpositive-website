@@ -1,0 +1,15 @@
+name: Create the Azure Infrastructure for the Cloud Positive Website
+on:
+    push:
+        branches: [ main, feature/* ]
+    workflow_dispatch:
+
+jobs:
+    azure-infrastructure-foundation:
+        runs-on: [Linux, self-hosted]
+        permissions:
+            contents: read
+            id-token: write
+        
+        steps:
+        - pwsh: "Hostname"
