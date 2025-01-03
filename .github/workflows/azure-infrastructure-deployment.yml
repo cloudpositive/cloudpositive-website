@@ -10,6 +10,6 @@ jobs:
         permissions:
             contents: read
             id-token: write
-        
         steps:
-        - pwsh: "Hostname"
+            - name: Checkout
+              uses: actions/checkout@v3
