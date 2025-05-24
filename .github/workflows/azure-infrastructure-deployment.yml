@@ -22,3 +22,16 @@ jobs:
                 client-id: ${{ secrets.CLIENT_ID }}
                 subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
                 enable-AzPSSession: true
+            
+            - uses: bash
+              name: Terraform Login
+              with:
+                script: |
+                  export TF_TOKEN_app_terraform_io="${{ secrets.TF_API_TOKEN }}"
+                  echo "Terraform login successful"
+
+            - uses: bash
+              name: Terraform initialize
+              with:
+                script: |
+                  terraform init
