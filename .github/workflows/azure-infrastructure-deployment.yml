@@ -24,5 +24,6 @@ jobs:
                 enable-AzPSSession: true
             
             - run: |
-                  export TF_TOKEN_app_terraform_io="${{ secrets.TF_API_TOKEN }}"
-                  echo "Terraform login successful"
+                export TF_TOKEN_app_terraform_io="${{ secrets.TF_API_TOKEN }}"
+                terraform login
+                 echo "Terraform login successful"
