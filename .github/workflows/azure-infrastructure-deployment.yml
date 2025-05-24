@@ -23,7 +23,6 @@ jobs:
                 subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
                 enable-AzPSSession: true
             
-            - run: |
-                export TF_TOKEN_app_terraform_io="${{ secrets.TF_API_TOKEN }}"
-                terraform login
-                 echo "Terraform login successful"
+            - uses: hashicorp/setup-terraform@v3
+              with:
+                cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
