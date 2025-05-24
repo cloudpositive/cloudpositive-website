@@ -12,7 +12,7 @@ jobs:
             id-token: write
         defaults:
           run:
-            working-directory: .
+            working-directory: ${{ env.tf_actions_working_dir }}
 
         steps:
             - name: Checkout
