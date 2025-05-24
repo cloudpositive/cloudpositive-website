@@ -12,7 +12,7 @@ jobs:
             id-token: write
         defaults:
           run:
-            working-directory: ${{ env.tf_actions_working_dir }}
+            working-directory: .
 
         steps:
             - name: Checkout
@@ -32,4 +32,4 @@ jobs:
 
             - run: |
                 ls
-                terraform init -input=false
+                terraform init . --input=false
