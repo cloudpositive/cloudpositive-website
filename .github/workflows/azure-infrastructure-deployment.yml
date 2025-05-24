@@ -6,8 +6,7 @@ on:
 
 jobs:
     azure-infrastructure-foundation:
-        #runs-on: ubuntu-latest
-        runs-on: [Linux]
+        runs-on: ubuntu-latest
         permissions:
             contents: read
             id-token: write
