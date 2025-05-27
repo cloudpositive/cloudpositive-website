@@ -1,11 +1,5 @@
 terraform { 
-  cloud { 
-    organization = "cloud-positive" 
-    workspaces { 
-      name = "website-infra" 
-    }
-  }
-
+  
 	backend "remote" { 
     organization = "cloud-positive" 
     workspaces { 
