@@ -41,6 +41,7 @@ jobs:
         if: success() # Only proceed if terraform-plan job succeeds
         
         permissions:
+          contents: read
           issues: write
 
         steps:
