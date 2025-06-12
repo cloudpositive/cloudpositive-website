@@ -13,8 +13,3 @@ terraform {
   }
   required_version = ">= 1.12.0"
 }
-
-resource "random_id" "name" {
-  byte_length = 4
-	prefix      = "website--"
-}
