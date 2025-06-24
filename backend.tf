@@ -6,10 +6,15 @@ terraform {
     }
   }
   required_providers {
-    random = {
-      source  = "hashicorp/random"
-      version = "3.3.2"
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "4.34.0"
     }
   }
   required_version = ">= 1.12.0"
+}
+
+provider "azurerm" {
+  resource_provider_registrations = "none"
+  features {}
 }
