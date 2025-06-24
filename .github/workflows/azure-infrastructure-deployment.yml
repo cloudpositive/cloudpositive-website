@@ -36,7 +36,7 @@ jobs:
 
             - run: terraform init
 
-            - run: terraform plan
+            - run: terraform plan -var-file variables.tfvars
     
     terraform-apply:
         runs-on: ubuntu-latest
@@ -68,4 +68,4 @@ jobs:
                 cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
             - run: terraform init
-            - run: terraform apply -auto-approve
+            - run: terraform apply -var-file variables.tfvars -auto-approve
