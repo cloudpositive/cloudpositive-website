@@ -30,7 +30,7 @@ jobs:
               with:
                 cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-            - run: terraform init
+            - run: terraform init -backend-config="subscription_id=${{ secrets.SUBSCRIPTION_ID }}"
 
             - run: terraform plan
     
@@ -63,5 +63,5 @@ jobs:
               with:
                 cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-            - run: terraform init
+            - run: terraform init -backend-config="subscription_id=${{ secrets.SUBSCRIPTION_ID }}"
             - run: terraform apply -auto-approve
