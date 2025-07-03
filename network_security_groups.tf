@@ -9,3 +9,10 @@ resource "azurerm_network_security_group" "app" {
   location            = azurerm_resource_group.ntwk-rg.location
   resource_group_name = azurerm_resource_group.ntwk-rg.name
 }
+
+resource "azurerm_network_security_group" "mys" {
+  name                = var.nsg_name_mys
+  location            = azurerm_resource_group.ntwk-rg.location
+  resource_group_name = azurerm_resource_group.ntwk-rg.name
+  
+}

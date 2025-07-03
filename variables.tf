@@ -26,8 +26,12 @@ variable "nsg_name_asp" {
   type        = string
 }
 
-
 variable "nsg_name_app" {
   description = "The name of the Azure Network Security Group for the Application Service"
+  type        = string
+}
+
+variable "nsg_name_mys" {
+  description = "The name of the Azure Network Security Group for the MySQL Flexible Server"
   type        = string
 }
