@@ -9,3 +9,11 @@ resource "azurerm_mysql_flexible_server" "mysql" {
   sku_name               = "B_Standard_B1ms"
   depends_on = [ azurerm_private_dns_zone_virtual_network_link.vnet_link_mysql ]
 }
+
+resource "azurerm_mysql_flexible_database" "wordpress_db" {
+  name                = "wordpress"
+  resource_group_name = azurerm_resource_group.data-rg.name
+  server_name         = azurerm_mysql_flexible_server.mysql.name
+  charset             = "utf8"
+  collation           = "utf8_general_ci"
+}
