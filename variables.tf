@@ -35,3 +35,9 @@ variable "nsg_name_mys" {
   description = "The name of the Azure Network Security Group for the MySQL Flexible Server"
   type        = string
 }
+
+variable "wordpress_db_name" {
+  description = "The name of the WordPress database"
+  type        = string
+  default     = "wordpress"
+}
