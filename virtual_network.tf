@@ -33,3 +33,13 @@ resource "azurerm_subnet" "cpw-mysql" {
     }
   }
 }
+
+resource "azurerm_subnet_network_security_group_association" "asp" {
+  subnet_id                 = azurerm_subnet.cpw-asp.id
+  network_security_group_id = azurerm_network_security_group.asp.id
+}
+
+resource "azurerm_subnet_network_security_group_association" "mys" {
+  subnet_id                 = azurerm_subnet.cpw-mysql.id
+  network_security_group_id = azurerm_network_security_group.mys.id
+}
