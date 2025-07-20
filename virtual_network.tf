@@ -42,7 +42,7 @@ resource "azurerm_subnet_network_security_group_association" "mys" {
   subnet_id                 = azurerm_subnet.cpw-mysql.id
   network_security_group_id = azurerm_network_security_group.mys.id
 }
-resource "azurerm_subnet_network_security_group_association" "blob_pe" {
+resource "azurerm_subnet_network_security_group_association" "blob" {
   subnet_id                 = azurerm_subnet.cpw-blob-pe.id
-  network_security_group_id = azurerm_network_security_group.blob_pe.id
+  network_security_group_id = azurerm_network_security_group.blob.id
 }

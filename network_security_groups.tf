@@ -30,14 +30,14 @@ resource "azurerm_network_security_rule" "allow_mysql_inbound" {
   network_security_group_name = azurerm_network_security_group.mys.name
 }
 
-resource "azurerm_network_security_group" "blob_pe" {
-  name                = "cpw-p-ntwk-nsg-blob-pe"
+resource "azurerm_network_security_group" "blob" {
+  name                = "cpw-p-ntwk-nsg-blob"
   location            = azurerm_resource_group.ntwk-rg.location
   resource_group_name = azurerm_resource_group.ntwk-rg.name
 }
 
 
-resource "azurerm_network_security_rule" "blob_pe_allow_from_asp" {
+resource "azurerm_network_security_rule" "blob_allow_from_asp" {
   name                        = "AllowBlobFromASP"
   priority                    = 100
   direction                   = "Inbound"
@@ -48,5 +48,5 @@ resource "azurerm_network_security_rule" "blob_pe_allow_from_asp" {
   source_address_prefixes     = ["172.16.0.0/25"]
   destination_address_prefix  = "*"
   resource_group_name         = azurerm_resource_group.ntwk-rg.name
-  network_security_group_name = azurerm_network_security_group.blob_pe.name
+  network_security_group_name = azurerm_network_security_group.blob.name
 }
