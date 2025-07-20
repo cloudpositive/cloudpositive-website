@@ -26,6 +26,13 @@ resource "azurerm_subnet" "cpw-mysql" {
   address_prefixes     = ["172.16.0.128/25"]
 }
 
+resource "azurerm_subnet" "cpw-blob-pe" {
+  name                 = "cpw-p-ntwk-subnet-blob-pe"
+  resource_group_name  = azurerm_resource_group.ntwk-rg.name
+  virtual_network_name = azurerm_virtual_network.cpw.name
+  address_prefixes     = ["172.16.1.224/28"]
+}
+
 resource "azurerm_subnet_network_security_group_association" "asp" {
   subnet_id                 = azurerm_subnet.cpw-asp.id
   network_security_group_id = azurerm_network_security_group.asp.id
@@ -34,4 +41,8 @@ resource "azurerm_subnet_network_security_group_association" "asp" {
 resource "azurerm_subnet_network_security_group_association" "mys" {
   subnet_id                 = azurerm_subnet.cpw-mysql.id
   network_security_group_id = azurerm_network_security_group.mys.id
+}
+resource "azurerm_subnet_network_security_group_association" "blob_pe" {
+  subnet_id                 = azurerm_subnet.cpw-blob-pe.id
+  network_security_group_id = azurerm_network_security_group.blob_pe.id
 }

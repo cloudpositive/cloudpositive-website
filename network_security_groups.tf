@@ -29,3 +29,24 @@ resource "azurerm_network_security_rule" "allow_mysql_inbound" {
   resource_group_name         = azurerm_resource_group.ntwk-rg.name
   network_security_group_name = azurerm_network_security_group.mys.name
 }
+
+resource "azurerm_network_security_group" "blob_pe" {
+  name                = "cpw-p-ntwk-nsg-blob-pe"
+  location            = azurerm_resource_group.ntwk-rg.location
+  resource_group_name = azurerm_resource_group.ntwk-rg.name
+}
+
+
+resource "azurerm_network_security_rule" "blob_pe_allow_from_asp" {
+  name                        = "AllowBlobFromASP"
+  priority                    = 100
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_ranges     = ["443"]
+  source_address_prefixes     = ["172.16.0.0/25"]
+  destination_address_prefix  = "*"
+  resource_group_name         = azurerm_resource_group.ntwk-rg.name
+  network_security_group_name = azurerm_network_security_group.blob_pe.name
+}
