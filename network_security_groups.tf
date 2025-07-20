@@ -29,17 +29,3 @@ resource "azurerm_network_security_rule" "allow_mysql_inbound" {
   resource_group_name         = azurerm_resource_group.ntwk-rg.name
   network_security_group_name = azurerm_network_security_group.mys.name
 }
-
-resource "azurerm_network_security_rule" "allow_mysql_outbound" {
-  name                        = "AllowMySQLOutbound"
-  priority                    = 100
-  direction                   = "Outbound"
-  access                      = "Allow"
-  protocol                    = "Tcp"
-  source_port_range           = "*"
-  destination_port_ranges     = ["3306"]
-  source_address_prefix       = "*"
-  destination_address_prefix  = "AzureCloud"
-  resource_group_name         = azurerm_resource_group.ntwk-rg.name
-  network_security_group_name = azurerm_network_security_group.mys.name
-}

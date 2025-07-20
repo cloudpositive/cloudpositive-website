@@ -24,14 +24,6 @@ resource "azurerm_subnet" "cpw-mysql" {
   resource_group_name  = azurerm_resource_group.ntwk-rg.name
   virtual_network_name = azurerm_virtual_network.cpw.name
   address_prefixes     = ["172.16.0.128/25"]
-
-  delegation {
-    name = "cpw-p-ntwk-subnet-mys-delegation"
-    service_delegation {
-      name    = "Microsoft.DBforMySQL/flexibleServers"
-      actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
-    }
-  }
 }
 
 resource "azurerm_subnet_network_security_group_association" "asp" {

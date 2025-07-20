@@ -2,7 +2,11 @@ resource "azurerm_private_endpoint" "mysql_pe" {
   name                = "cpw-p-data-mfs-pe"
   location            = azurerm_resource_group.data-rg.location
   resource_group_name = azurerm_resource_group.data-rg.name
-  subnet_id           = azurerm_subnet.cpw-pe.id
+  subnet_id           = azurerm_subnet.cpw-mysql.id
+  private_dns_zone_group {
+    name                 = "default"
+    private_dns_zone_ids = [azurerm_private_dns_zone.pdns_mysql.id]
+  }
 
   private_service_connection {
     name                           = "cpw-p-data-mfs-psc"
@@ -10,4 +14,6 @@ resource "azurerm_private_endpoint" "mysql_pe" {
     subresource_names              = ["mysqlServer"]
     is_manual_connection           = false
   }
+
+  custom_network_interface_name = "cpw-p-data-mfs-pe-nic"
 }
