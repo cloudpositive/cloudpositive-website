@@ -18,12 +18,12 @@ resource "azurerm_linux_web_app" "wordpress" {
     identity_ids = [azurerm_user_assigned_identity.wordpress.id]
   }
   app_settings = {
-    WEBSITES_ENABLE_APP_SERVICE_STORAGE = "true"
+    WEBSITES_ENABLE_APP_SERVICE_STORAGE = true
     DATABASE_HOST                       = "cpw-p-data-mfs.mysql.database.azure.com"
     DATABASE_NAME                       = var.wordpress_db_name
     DATABASE_USERNAME                   = var.mysql_flexible_administrator_login
     DATABASE_PASSWORD                   = var.mysql_flexible_administrator_password
-    AFD_ENABLED                         = "true"
+    AFD_ENABLED                         = true
     AFD_ENDPOINT                        = "cloudpositive-web-aecqcmcydugacbgv.z03.azurefd.net"
     #WORDPRESS_HOME                      = "cloudpositive.eu"
     #WORDPRESS_SITEURL                   = "https://cpw-wp-app.azurewebsites.net"
