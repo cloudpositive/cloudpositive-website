@@ -5,13 +5,13 @@ resource "azurerm_virtual_network" "cpw" {
   resource_group_name = azurerm_resource_group.ntwk-rg.name
 }
 
-resource "azurerm_subnet" "cpw-asp" {
-  name                 = "cpw-p-ntwk-subnet-asp"
+resource "azurerm_subnet" "cpw-app" {
+  name                 = "cpw-p-ntwk-subnet-app"
   resource_group_name  = azurerm_resource_group.ntwk-rg.name
   virtual_network_name = azurerm_virtual_network.cpw.name
   address_prefixes     = ["172.16.0.0/25"]
   delegation {
-    name = "cpw-p-ntwk-subnet-asp-delegation"
+    name = "cpw-p-ntwk-subnet-app-delegation"
     service_delegation {
       name    = "Microsoft.Web/serverFarms"
       actions = ["Microsoft.Network/virtualNetworks/subnets/action"]
@@ -33,9 +33,9 @@ resource "azurerm_subnet" "cpw-blob-pe" {
   address_prefixes     = ["172.16.1.224/28"]
 }
 
-resource "azurerm_subnet_network_security_group_association" "asp" {
-  subnet_id                 = azurerm_subnet.cpw-asp.id
-  network_security_group_id = azurerm_network_security_group.asp.id
+resource "azurerm_subnet_network_security_group_association" "app" {
+  subnet_id                 = azurerm_subnet.cpw-app.id
+  network_security_group_id = azurerm_network_security_group.app.id
 }
 
 resource "azurerm_subnet_network_security_group_association" "mys" {

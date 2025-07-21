@@ -17,7 +17,7 @@ resource "azurerm_storage_account" "cpw_blob" {
   local_user_enabled                = true
   min_tls_version                   = "TLS1_2"
   nfsv3_enabled                     = false
-  public_network_access_enabled     = false
+  public_network_access_enabled     = true
   queue_encryption_key_type         = "Service"
   sftp_enabled                      = false
   shared_access_key_enabled         = true

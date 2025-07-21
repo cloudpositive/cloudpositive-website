@@ -2,8 +2,8 @@ resource "azurerm_mysql_flexible_server" "mysql" {
   name                   = "cpw-p-data-mfs"
   resource_group_name    = azurerm_resource_group.data-rg.name
   location               = azurerm_resource_group.data-rg.location
-  administrator_login    = "psqladmin"
-  administrator_password = "H@Sh1CoR3!"
+  administrator_login    = var.mysql_flexible_administrator_login
+  administrator_password = var.mysql_flexible_administrator_password
   sku_name               = "B_Standard_B1ms"
   version                = "8.0.21"
   depends_on = [ azurerm_private_dns_zone_virtual_network_link.vnet_link_mysql ]
