@@ -23,9 +23,13 @@ resource "azurerm_linux_web_app" "wordpress" {
     DATABASE_NAME                       = var.wordpress_db_name
     DATABASE_USERNAME                   = var.mysql_flexible_administrator_login
     DATABASE_PASSWORD                   = var.mysql_flexible_administrator_password
+    AFD_ENABLED                         = "true"
+    AFD_HOSTNAME                        = "https://cloudpositive-web-aecqcmcydugacbgv.z03.azurefd.net"
+    #WORDPRESS_HOME                      = "https://cloudpositive.eu"
+    #WORDPRESS_SITEURL                   = "https://cpw-wp-app.azurewebsites.net"
   }
   site_config {
-    always_on                               = true
+    always_on                               = false
     container_registry_use_managed_identity = false
     default_documents                       = ["Default.htm", "Default.html", "Default.asp", "index.htm", "index.html", "iisstart.htm", "default.aspx", "index.php", "hostingstart.html"]
     ftps_state                              = "FtpsOnly"
@@ -45,6 +49,7 @@ resource "azurerm_linux_web_app" "wordpress" {
     worker_count                = 1
     application_stack {
       docker_image_name = var.app_service_plan_image
+
     }
   }
 }
