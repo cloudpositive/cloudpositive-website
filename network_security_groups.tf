@@ -31,12 +31,10 @@ resource "azurerm_network_security_rule" "allow_mysql_inbound" {
 }
 
 resource "azurerm_network_security_group" "blob" {
-  name                = "cpw-p-ntwk-nsg-blob"
+  name                = var.nsg_name_blob
   location            = azurerm_resource_group.ntwk-rg.location
   resource_group_name = azurerm_resource_group.ntwk-rg.name
 }
-
-
 resource "azurerm_network_security_rule" "blob_allow_from_asp" {
   name                        = "AllowBlobFromASP"
   priority                    = 100
