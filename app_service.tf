@@ -25,7 +25,7 @@ resource "azurerm_linux_web_app" "wordpress" {
     DATABASE_PASSWORD                   = var.mysql_flexible_administrator_password
     AFD_ENABLED                         = "true"
     AFD_HOSTNAME                        = "https://cloudpositive-web-aecqcmcydugacbgv.z03.azurefd.net"
-    #WORDPRESS_HOME                      = "https://cloudpositive.eu"
+    WORDPRESS_HOME                      = "cloudpositive.eu"
     #WORDPRESS_SITEURL                   = "https://cpw-wp-app.azurewebsites.net"
   }
   site_config {
