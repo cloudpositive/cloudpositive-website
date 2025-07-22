@@ -26,7 +26,6 @@ resource "azurerm_linux_web_app" "wordpress" {
     AFD_ENABLED                         = true
     AFD_ENDPOINT                        = "cloudpositive-web-aecqcmcydugacbgv.z03.azurefd.net"
     #WORDPRESS_HOME                      = "cloudpositive.eu"
-    #WORDPRESS_SITEURL                   = "https://cpw-wp-app.azurewebsites.net"
   }
   site_config {
     always_on                               = false
