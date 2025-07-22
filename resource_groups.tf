@@ -12,9 +12,3 @@ resource "azurerm_resource_group" "frontend-rg" {
   name     = var.rg_name_frontend
   location = var.deployment_azure_region
 }
-
-resource "azurerm_resource_group" "app-rg" {
-  name     = var.rg_name_app
-  location = var.deployment_azure_region
-  
-}

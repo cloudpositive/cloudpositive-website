@@ -1,6 +1,6 @@
 resource "azurerm_service_plan" "wordpress_plan" {
-  location                        = azurerm_resource_group.app-rg.location
-  resource_group_name             = azurerm_resource_group.app-rg.name
+  location                        = azurerm_resource_group.frontend-rg.location
+  resource_group_name             = azurerm_resource_group.frontend-rg.name
   name                            = var.app_service_plan_name
   os_type                         = "Linux"
   per_site_scaling_enabled        = false

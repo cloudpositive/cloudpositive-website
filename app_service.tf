@@ -1,7 +1,7 @@
 resource "azurerm_linux_web_app" "wordpress" {
   name                    = var.app_service_name
-  location                = azurerm_resource_group.app-rg.location
-  resource_group_name     = azurerm_resource_group.app-rg.name
+  location                = azurerm_resource_group.frontend-rg.location
+  resource_group_name     = azurerm_resource_group.frontend-rg.name
   service_plan_id         = azurerm_service_plan.wordpress_plan.id
   client_affinity_enabled = false
   #  client_certificate_enabled               = false

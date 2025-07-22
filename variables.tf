@@ -20,13 +20,6 @@ variable "rg_name_frontend" {
   type        = string
 }
 
-variable "rg_name_app" {
-  description = "The name of the Azure Resource Group for the Application Service"
-  type        = string
-  default     = "cpw-p-app-rg"
-
-}
-
 # NSGs
 variable "nsg_name_asp" {
   description = "The name of the Azure Network Security Group for the Application Service Plan"

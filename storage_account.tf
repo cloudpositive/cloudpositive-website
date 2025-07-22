@@ -1,5 +1,5 @@
 resource "azurerm_storage_account" "cpw_blob" {
-  name                     = "cpwblob"
+  name                     = "cpwpdatasta"
   resource_group_name      = azurerm_resource_group.data-rg.name
   location                 = azurerm_resource_group.data-rg.location
   account_tier             = "Standard"
@@ -11,7 +11,7 @@ resource "azurerm_storage_account" "cpw_blob" {
   default_to_oauth_authentication   = false
   dns_endpoint_type                 = "Standard"
   https_traffic_only_enabled        = true
-  infrastructure_encryption_enabled = false
+  infrastructure_encryption_enabled = true
   is_hns_enabled                    = false
   large_file_share_enabled          = true
   local_user_enabled                = true
