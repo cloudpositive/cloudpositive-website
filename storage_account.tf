@@ -50,3 +50,10 @@ resource "azurerm_storage_container" "wordpress_media" {
   storage_account_id  = azurerm_storage_account.wordpress_blob_storage.id
   container_access_type = "private"
 }
+resource "azurerm_storage_share" "wordpress_content_share" {
+  name                 = "wordpressdata"
+  storage_account_id  = azurerm_storage_account.wordpress_blob_storage.id
+  quota               = 1024
+  access_tier = "TransactionOptimized"
+  enabled_protocol = "SMB"
+}

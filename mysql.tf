@@ -6,6 +6,7 @@ resource "azurerm_mysql_flexible_server" "mysql" {
   administrator_password = var.mysql_flexible_administrator_password
   sku_name               = "B_Standard_B1ms"
   version                = "8.0.21"
+  public_network_access = "Disabled"
   depends_on = [ azurerm_private_dns_zone_virtual_network_link.vnet_link_mysql ]
 }
 

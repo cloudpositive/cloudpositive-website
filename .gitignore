@@ -1,2 +1,3 @@
 .terraform/providers/**
 .idea/*
+.DS_Store

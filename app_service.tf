@@ -17,17 +17,36 @@ resource "azurerm_linux_web_app" "wordpress" {
     type         = "UserAssigned"
     identity_ids = [azurerm_user_assigned_identity.wordpress_uami.id]
   }
+  depends_on = [ azurerm_mysql_flexible_server.mysql, azurerm_mysql_flexible_database.wordpress_db,azurerm_private_endpoint.mysql_pe ]
   app_settings = {
-    WEBSITES_ENABLE_APP_SERVICE_STORAGE = true
-    DATABASE_HOST                       = "cpw-p-data-mfs.mysql.database.azure.com"
-    DATABASE_NAME                       = var.wordpress_db_name
-    DATABASE_USERNAME                   = var.mysql_flexible_administrator_login
-    DATABASE_PASSWORD                   = var.mysql_flexible_administrator_password
-    AFD_ENABLED                         = true
-    AFD_ENDPOINT                        = "cloudpositive-web-aecqcmcydugacbgv.z03.azurefd.net"
-    #WORDPRESS_HOME                             = "https://cloudpositive.eu"
-    SETUP_PHPMYADMIN                    = true
+    WEBSITES_ENABLE_APP_SERVICE_STORAGE   = true
+    WORDPRESS_LOCAL_STORAGE_CACHE_ENABLED = true
+#    ENABLE_EMAIL_MANAGED_IDENTITY         = true #Needed if using Azure Communication Services
+#    WP_EMAIL_CONNECTION_STRING =  endpoint=htt........ Required to enable outbound email via ACS
+    DATABASE_HOST                         = "cpw-p-data-mfs.mysql.database.azure.com"
+    DATABASE_NAME                         = var.wordpress_db_name
+    DATABASE_USERNAME                     = var.mysql_flexible_administrator_login
+    DATABASE_PASSWORD                     = var.mysql_flexible_administrator_password
+    AFD_ENABLED                           = true
+    AFD_ENDPOINT                          = "cloudpositive-web-aecqcmcydugacbgv.z03.azurefd.net"
+    WP_HOME                               = "https://cloudpositive.eu"
+    WP_SITEURL                            = "https://cloudpositive.eu"
+    SETUP_PHPMYADMIN                      = true
+    WEBSITE_TIME_ZONE                     = "W. Europe Standard Time"
+    BLOB_STORAGE_URL     = "https://cpwpdatasta.blob.core.windows.net/wordpressmedia"
+    BLOB_CONTAINER_NAME  = azurerm_storage_container.wordpress_media.name
+    BLOB_STORAGE_ENABLED = true
+    STORAGE_ACCOUNT_KEY  = azurerm_storage_account.wordpress_blob_storage.primary_access_key
+    STORAGE_ACCOUNT_NAME = azurerm_storage_account.wordpress_blob_storage.name
   }
+#    storage_account {
+#     name        = "wordpress-wwwroot-mount-config" # A name for this specific mount configuration
+#     account_name = azurerm_storage_account.wordpress_blob_storage.name
+#     share_name   = azurerm_storage_share.wordpress_content_share.name
+#     mount_path   = "/home/site/wwwroot" # The crucial mount path for WordPress
+#     access_key   = azurerm_storage_account.wordpress_blob_storage.primary_access_key
+#     type         = "AzureFiles" # Specifies it's an Azure File Share mount
+#  }    
   site_config {
     always_on                               = false
     container_registry_use_managed_identity = false
@@ -49,7 +68,6 @@ resource "azurerm_linux_web_app" "wordpress" {
     worker_count                = 1
     application_stack {
       docker_image_name = var.app_service_plan_image
-
     }
-  }
+}
 }
