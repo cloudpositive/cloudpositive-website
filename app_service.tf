@@ -15,7 +15,7 @@ resource "azurerm_linux_web_app" "wordpress" {
   webdeploy_publish_basic_authentication_enabled = true
   identity {
     type         = "UserAssigned"
-    identity_ids = [azurerm_user_assigned_identity.wordpress.id]
+    identity_ids = [azurerm_user_assigned_identity.wordpress_uami.id]
   }
   app_settings = {
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = true
