@@ -1,4 +1,4 @@
-resource "azurerm_storage_account" "cpw_blob" {
+resource "azurerm_storage_account" "wordpress_blob_storage" {
   name                     = "cpwpdatasta"
   resource_group_name      = azurerm_resource_group.data-rg.name
   location                 = azurerm_resource_group.data-rg.location
@@ -47,6 +47,6 @@ resource "azurerm_storage_account" "cpw_blob" {
 
 resource "azurerm_storage_container" "wordpress_media" {
   name                  = "wordpressmedia"
-  storage_account_id  = azurerm_storage_account.cpw_blob.id
+  storage_account_id  = azurerm_storage_account.wordpress_blob_storage.id
   container_access_type = "private"
 }

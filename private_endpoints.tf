@@ -18,7 +18,7 @@ resource "azurerm_private_endpoint" "mysql_pe" {
   custom_network_interface_name = "cpw-p-data-mfs-pe-nic"
 }
 
-resource "azurerm_private_endpoint" "cpw_blob_pe" {
+resource "azurerm_private_endpoint" "wordpress_blob_storage_pe" {
   name                = "cpw-p-data-cpwblob-pe"
   location            = azurerm_resource_group.data-rg.location
   resource_group_name = azurerm_resource_group.data-rg.name
@@ -30,7 +30,7 @@ resource "azurerm_private_endpoint" "cpw_blob_pe" {
 
   private_service_connection {
     name                           = "cpw-p-data-cpwblob-psc"
-    private_connection_resource_id = azurerm_storage_account.cpw_blob.id
+    private_connection_resource_id = azurerm_storage_account.wordpress_blob_storage.id
     subresource_names              = ["blob"]
     is_manual_connection           = false
   }
