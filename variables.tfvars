@@ -19,3 +19,7 @@ app_service_plan_image = "mcr.microsoft.com/appsvc/wordpress-debian-php:8.3"
 # MySQL Flexible Server
 mysql_flexible_administrator_login    = "psqladmin"
 mysql_flexible_administrator_password = "moNjBCEDA8ctwfI"
+
+# Wordpress 
+wordpress_administrator_login    = "wp-admin"
+wordpress_administrator_password = "y0JjuHV4BmzEMk2"

@@ -70,3 +70,14 @@ variable "app_service_plan_image" {
   description = "The Docker image for the App Service Plan"
   type        = string
 }
+
+# WordPress Administrator
+variable "wordpress_administrator_login" {
+  description = "The administrator login for the WordPress application"
+  type        = string
+}
+
+variable "wordpress_administrator_password" {
+  description = "The administrator password for the WordPress application"
+  type        = string
+}
